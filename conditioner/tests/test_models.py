@@ -7,7 +7,7 @@ from django.test import TestCase
 
 from conditioner.models import Rule
 from conditioner.tests.factories import RuleFactory, BaseActionFactory, BaseConditionFactory
-from utils.models import TimeStampedModelMixin
+from conditioner.utils import TimeStampedModelMixin
 
 
 class RuleTestCase(TestCase):

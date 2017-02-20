@@ -4,7 +4,7 @@ Conditioner module models
 from django.db import models
 from django.contrib.contenttypes.models import ContentType
 
-from utils.models import TimeStampedModelMixin
+from conditioner.utils import TimeStampedModelMixin
 
 
 class Rule(TimeStampedModelMixin, models.Model):
