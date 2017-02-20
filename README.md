@@ -1,13 +1,14 @@
 # django-conditioner
-Create simple 'if this then that' style rules in your Django application. Comes with a bunch of ready to use actions
+Create simple 'if this then that' style rules in your Django application. Comes with a bunch of ready-to-use actions
 and conditions, but is also easily extensible and allows model specific actions/conditions.
 
-Conditioner helps you create simple rules that consist of condition (if this) action (then that). It's currently a work
-in progress, but we successfully use it in production with custom conditions and actions that allow us to send
-'reminder' emails to users before their license expires.
+Conditioner helps you create simple rules that consist of a condition (if this), and an action (then that). It's
+currently a work in progress, but we successfully use it in production with custom conditions and actions that allow us
+to send 'reminder' emails to users before their license expires.
 
-It was created to 'scratch our itch' and implementing use cases needed by us will be the priority, but the overall goal
-is to create a set of useful actions and conditions that could be applied to a number of different scenarios.
+It was created to 'scratch an itch', and for the foreseeable future we will prioritise implementing use-cases needed by
+us as. The overall goal, however, is to create a set of useful actions and conditions that could be applied to a number
+of different scenarios.
 
 Oh, and shout-out to [django-polymorphic][django-polymorphic] without which this whole thing would be much harder to do.
 
@@ -19,10 +20,10 @@ $ pip install django-conditioner
 ```
 
 ## Usage
-If you want to use already implemented actions and conditions then all you need to do is install the package, add
+If you want to use the already implemented actions and conditions then all you need to do is install the package, add
 `conditioner` to your list of `INSTALLED_APPS` and run `$ python manage.py migrate`.
 
-You should then see a `Conditioner` section with `Rule` child in Django Admin. Adding a new one should be pretty
+You should then see a `Conditioner` section with a `Rule` child in Django Admin. Adding a new one should be pretty
 self-explanatory.
 
 ## Advanced usage
@@ -37,8 +38,8 @@ Both actions and conditions are divided into generic, model generic and model sp
  previous example)
 
 ### Adding new actions and/or conditions
-One of the main goals was to make conditioner as flexible as possible and make adding new actions/condtions as easy
-as possible. I'll try to quickly go over steps needed to add a new, model specific action.
+One of the main goals was to make conditioner as flexible as possible and make adding new actions/conditions as easy
+as possible.
 
 #### Creating the action
 All actions need to inherit from `BaseAction` and implement `run_action()`. Model generic actions should set
@@ -46,8 +47,8 @@ All actions need to inherit from `BaseAction` and implement `run_action()`. Mode
 model specific then model instance will be passed to `run_action()` method as `instance` named argument.
 
 #### Making sure that the action is picked up by Django
-You'll need to make sure that your newly created action is picked up by Django. Assuming that it lives in `actions.py`
-file inside `sample_module` module, your `sample_module/apps.py` should look something like this:
+You'll need to make sure that your newly created action is picked up by Django. Assuming that it lives in an
+`actions.py` file inside `sample_module` module, your `sample_module/apps.py` should look something like this:
 
 ```python
 from django.apps import AppConfig
@@ -62,7 +63,7 @@ class SampleModuleAppConfig(AppConfig):
 ```
 
 #### Registering action to Django Admin
-Finally you'll need to hook up your action to `Rule` Django Admin. You do that by adding it to the list of available
+Finally you'll need to hook up your action to the `Rule` Django Admin. You do that by adding it to the list of available
 inline polymorphic models:
 
 ```python
@@ -80,8 +81,8 @@ class SampleModuleActionInline(StackedPolymorphicInline.Child):
 ActionInline.child_inlines.append(SampleModuleActionInline)
 ```
 
-Assuming you put that in `sample_module/conditioner.py` file, you'll need to make sure that it's also picked up by
-Django by adding `from sample_module import conditioner` to your app config `ready()` method.
+Assuming you put the code above in the `sample_module/conditioner.py` file, you'll need to make sure that it's also
+picked up by Django by adding `from sample_module import conditioner` to your app config `ready()` method.
 
 You should now see your custom action in Django Admin.
 
