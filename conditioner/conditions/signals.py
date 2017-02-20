@@ -96,10 +96,10 @@ class ModelSignalCondition(BaseCondition):
             self.connect_signal()
         return super().save(*args, **kwargs)
 
-    def delete(self, using=None, keep_parents=False):
+    def delete(self, *args, **kwargs):
         """
         Extends default `delete()` behaviour and disconnects signal
         """
-        super_delete = super().delete(using, keep_parents)
+        super_delete = super().delete(*args, **kwargs)
         self.disconnects_signal()  # After deletion to make sure that everything went OK
         return super_delete

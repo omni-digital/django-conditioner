@@ -30,8 +30,8 @@ class BaseActionTestCase(TestCase):
         field = self.model._meta.get_field('rule')
 
         self.assertIsInstance(field, models.OneToOneField)
-        self.assertEqual(field.remote_field.model, Rule)
-        self.assertEqual(field.remote_field.related_name, 'action')
+        self.assertEqual(field.rel.model, Rule)
+        self.assertEqual(field.rel.related_name, 'action')
         self.assertEqual(field.verbose_name, 'rule')
 
     def test_model_run_action_method(self):
@@ -62,8 +62,8 @@ class BaseConditionTestCase(TestCase):
         field = self.model._meta.get_field('rule')
 
         self.assertIsInstance(field, models.OneToOneField)
-        self.assertEqual(field.remote_field.model, Rule)
-        self.assertEqual(field.remote_field.related_name, 'condition')
+        self.assertEqual(field.rel.model, Rule)
+        self.assertEqual(field.rel.related_name, 'condition')
         self.assertEqual(field.verbose_name, 'rule')
 
     def test_model_str_method(self):
