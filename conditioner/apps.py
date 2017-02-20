@@ -21,5 +21,5 @@ class ConditionerAppConfig(AppConfig):
         try:
             for signal_condition in conditions.ModelSignalCondition.objects.all():
                 signal_condition.connect_signal()
-        except db.ProgrammingError:  # Django migrations weren't run yet
+        except db.DatabaseError:  # Django migrations weren't run yet
             pass

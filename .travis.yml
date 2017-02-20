@@ -1,0 +1,19 @@
+dist: trusty
+
+notifications:
+  slack:
+    rooms:
+      - secure: Z7ThkNnkNwHQ3uWupEp7n0ArpK08Hw+L4pZKUKHLhIn93pmZXq18BeDRugKWnjWPoPUI/DAQJ6gW59aUBnb1ZSuc8VaDtP1qsYhf2OW1yDKlNB9zgWEfSMZw4UNWmLyD9sovQuIr5coftmSmJvP++JkrvLlRVEIvCtdbpBa44stRbZR2d3JF+6oKGEqTXdYf5YonjFS8oihqzveAIVV7+jfZ8Jh9B/csPyaprNmu7SuAJLHTmR15JuIKiMqaT4Ghm0qubDDrEOuqqFm1K2aWfJpFYInQ7nWskNS5NRZeZzTe2E8b/ia9TAflxiLJKUUqkidLzlVzGMhlixcIKpSdytfEZAZ1p7FHnZWMQVttIDGtaU9D1J+vaMY08Xk0D2EV0WvtL3pMx4T0huL/RPCU3yJSF3qJG2AvVh59ksqMoXOCfeASBDOODSBXcATEBMseb9PgwClqtET2IoKjBoEKzGW9gmTK/hP5pyvSPOPgtbjI7haG8MnidXnamDJrUsELWNEoEwK8Ndb9KrYlmbxc/a34UO7xJtXAz7x2mYJMajWApXYR5lnDhOqJPsUx3C2pMdST0g7/B1khwgmfzmm0KBiovxoaLIvQZdgwAGIuzUsnUryycOJYJrGN5tNqHXccfrCY5ndPIda8UbepATbntTT885GSSMtkUzxrlbvpbN8=
+
+language: python
+
+python:
+  - "3.4"
+  - "3.5"
+  - "3.6"
+
+install:
+  - pip install tox-travis
+
+script:
+  - tox

@@ -4,7 +4,33 @@ Conditioner module related utils
 import glob
 import os
 
+from django.db import models
 from django.template.utils import get_app_template_dirs
+
+
+class TimeStampedModelMixin(models.Model):
+    """
+    An abstract base class model that provides self managed 'created' and 'modified' fields.
+
+    Based on:
+        https://github.com/django-extensions/django-extensions/blob/master/django_extensions/db/models.py
+    """
+    created = models.DateTimeField(
+        verbose_name='created',
+        editable=False,
+        auto_now_add=True,
+    )
+
+    modified = models.DateTimeField(
+        verbose_name='modified',
+        editable=False,
+        auto_now=True,
+    )
+
+    class Meta:
+        abstract = True
+        get_latest_by = 'modified'
+        ordering = ('-modified', '-created')
 
 
 def get_available_templates(template_dir):

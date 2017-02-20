@@ -1,0 +1,4 @@
+django-polymorphic>=1.1
+factory_boy>=2.8.1
+freezegun>=0.3.8
+tox>=2.6.0

@@ -3,9 +3,49 @@ Test 'conditioner.utils' file
 """
 from unittest import mock
 
+from django.db import models
 from django.test import TestCase
 
-from conditioner.utils import get_available_templates
+from conditioner.utils import TimeStampedModelMixin, get_available_templates
+
+
+class TimeStampedModelMixinTestCase(TestCase):
+    """
+    Test `conditioner.utils.TimeStampedModelMixin` model
+    """
+    def setUp(self):
+        super().setUp()
+        self.model = TimeStampedModelMixin
+
+    def test_model_inheritance(self):
+        """Test model inheritance"""
+        self.assertIsInstance(self.model(), models.Model)
+
+    def test_model_created_field(self):
+        """Test model 'created' field"""
+        field = self.model._meta.get_field('created')
+
+        self.assertIsInstance(field, models.DateTimeField)
+        self.assertEqual(field.verbose_name, 'created')
+        self.assertFalse(field.editable)
+        self.assertTrue(field.auto_now_add)
+
+    def test_model_modified_field(self):
+        """Test model 'modified' field"""
+        field = self.model._meta.get_field('modified')
+
+        self.assertIsInstance(field, models.DateTimeField)
+        self.assertEqual(field.verbose_name, 'modified')
+        self.assertFalse(field.editable)
+        self.assertTrue(field.auto_now)
+
+    def test_model_meta_attributes(self):
+        """Test model meta attributes"""
+        meta = self.model._meta
+
+        self.assertTrue(meta.abstract)
+        self.assertEqual(meta.get_latest_by, 'modified')
+        self.assertEqual(meta.ordering, ('-modified', '-created'))
 
 
 class GetAvailableTemplatesTestCase(TestCase):

@@ -7,7 +7,7 @@ from django.test import TestCase
 
 from conditioner.models import Rule
 from conditioner.tests.factories import RuleFactory, BaseActionFactory, BaseConditionFactory
-from utils.models import TimeStampedModelMixin
+from conditioner.utils import TimeStampedModelMixin
 
 
 class RuleTestCase(TestCase):
@@ -33,8 +33,8 @@ class RuleTestCase(TestCase):
         field = self.model._meta.get_field('target_content_type')
 
         self.assertIsInstance(field, models.ForeignKey)
-        self.assertEqual(field.remote_field.model, ContentType)
-        self.assertEqual(field.remote_field.related_name, 'rules')
+        self.assertEqual(field.rel.model, ContentType)
+        self.assertEqual(field.rel.related_name, 'rules')
         self.assertEqual(field.verbose_name, 'target content type')
         self.assertTrue(field.null)
         self.assertTrue(field.blank)
