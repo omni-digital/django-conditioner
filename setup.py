@@ -34,13 +34,13 @@ def find_version(*file_paths):
     raise RuntimeError("Unable to find version string.")
 
 
-# TODO: Set license here, in classifiers and in __init__.py
 setup(
     name='django-conditioner',
     url='https://github.com/omni-digital/django-conditioner',
     download_url='https://github.com/omni-digital/django-conditioner/releases/latest',
     bugtrack_url='https://github.com/omni-digital/django-conditioner/issues',
     version=find_version('conditioner', '__init__.py'),
+    license='MIT License',
     author='Omni Digital',
     author_email='dev@omni-digital.co.uk',
     maintainer='Omni Digital',
@@ -67,6 +67,7 @@ setup(
         'Framework :: Django :: 1.9',
         'Framework :: Django :: 1.10',
         'Intended Audience :: Developers',
+        'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
         'Programming Language :: Python :: 3',

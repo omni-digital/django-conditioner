@@ -111,8 +111,11 @@ New actions and conditions more then welcome but should be first discussed and a
 ## Authors
 Developed and maintained by [Omni Digital][omni digital].
 
+Released under [MIT License][license].
+
 
 [django-polymorphic]: https://github.com/django-polymorphic/django-polymorphic/
 [github]: https://github.com/omni-digital/django-conditioner/
 [github add issue]: https://github.com/omni-digital/django-conditioner/issues/new
+[license]: https://github.com/omni-digital/django-conditioner/blob/master/LICENSE
 [omni digital]: https://omni-digital.co.uk/
