@@ -1,4 +1,9 @@
 # django-conditioner
+[![Build status](https://img.shields.io/travis/omni-digital/django-conditioner.svg)][travis]
+[![PyPI version](https://img.shields.io/pypi/v/django-conditioner.svg)][pypi]
+[![Python versions](https://img.shields.io/pypi/pyversions/django-conditioner.svg)][pypi]
+[![License](https://img.shields.io/github/license/omni-digital/django-conditioner.svg)][license]
+
 Create simple 'if this then that' style rules in your Django application. Comes with a bunch of ready-to-use actions
 and conditions, but is also easily extensible and allows model specific actions/conditions.
 
@@ -119,3 +124,5 @@ Released under [MIT License][license].
 [github add issue]: https://github.com/omni-digital/django-conditioner/issues/new
 [license]: https://github.com/omni-digital/django-conditioner/blob/master/LICENSE
 [omni digital]: https://omni-digital.co.uk/
+[pypi]: https://pypi.python.org/pypi/django-conditioner
+[travis]: https://travis-ci.org/omni-digital/django-conditioner
